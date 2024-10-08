@@ -1,5 +1,11 @@
+/**
+ * class of explosion
+ */
 
 
+/**
+ * class manages behavior for explosion animation.
+ */
 export class Explosion {
     position: Types.Vector2;
     parent: HTMLDivElement;

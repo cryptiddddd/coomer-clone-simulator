@@ -1,3 +1,7 @@
+/**
+ * main script -- manages base behavior and gathers html elements from document.
+ */
+
 import { Clone } from "./scripts/clone.js";
 import * as audio from "./scripts/audio.js";
 import { detectCollisions } from "./scripts/collisions.js";
@@ -48,20 +52,20 @@ function onUpdate() {
 SPAWN_BTN.addEventListener("click", () => {
     const newCoomer = new Clone();
 
-    // create
-    audio.onSpawn();
-    newCoomer.spawn(CONTAINER);
-
     // counters
     total ++;
     alive ++;
 
+    // create
+    audio.onSpawn();
+    newCoomer.spawn(CONTAINER);
     clones.add(newCoomer);
+
 });
 
 // experimental kill button
 KILL_BTN.addEventListener("click", () => {
-    if (clones.size == 0) throw {error: true, message: "THERE'S NOTHING OUT THEREER"};
+    if (clones.size == 0) throw {error: true, message: "THERE'S NOTHING OUT THEEEREEEEE"};
 
     // kill a random clone.
     Array.from(clones)[Math.floor(Math.random() * clones.size)].die();

@@ -37,6 +37,9 @@ function generateVelocity(): number {
 }
 
 
+/**
+ * class manages behavior of the clone elements.
+ */
 export class Clone {
     var: number;
     element: HTMLImageElement;

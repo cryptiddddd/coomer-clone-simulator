@@ -10,12 +10,13 @@
 
     --panel-bg: color-mix(in srgb, var(--bg) 70%, transparent);
     
-
     --font: 'VT323', 'Courier New', monospace;
     --font-size: 16px;
 
     --corners: 2px;
     --soft-outline: 1px solid color-mix(in srgb, var(--fg) 50%, transparent);
+
+    --clone-size: 72px;
 }
 
 ::selection {
@@ -31,6 +32,15 @@ body {
     color: var(--fg);
     font-family: var(--font);
     font-size: var(--font-size);
+}
+
+a {
+    color: var(--accent)!important;
+    text-decoration: none;
+}
+
+a:hover {
+    text-transform: uppercase;
 }
 
 img {
@@ -121,6 +131,14 @@ button:hover {
     padding: 2em 3em;
 }
 
+#credits {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 2em;
+
+    opacity: 0.5;
+}
+
 #toolbar button {
     font-size: 1.5rem;
 }
@@ -160,15 +178,17 @@ button:hover {
     translate: -50% -50%;
 }
 
+.clone {
+    width: var(--clone-size);
+}
+
 .explosion {
     width: 100px;
 }
 
 /* mobile styling */
 @media (max-width: 960px) {
-    /* #toolbar {
-        margin-bottom: auto;
-        margin-top: unset;
-    } */
+    :root {
+        --clone-size: 48px;
+    }
 }
-

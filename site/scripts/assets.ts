@@ -49,7 +49,7 @@ export const PAIN_AUDIOS = [
     "scream1.wav"
 ];
 
-export const COOMER_MISC_AUDIOS = HELLO_AUDIOS.concat([
+export const COOMER_MISC_AUDIOS = [
     "soda1.wav",
     "soda2.wav",
     "spices1.wav",
@@ -58,4 +58,4 @@ export const COOMER_MISC_AUDIOS = HELLO_AUDIOS.concat([
     "ropes1.wav",
     "scared1.wav",
     "scream1.wav"
-]);
+];

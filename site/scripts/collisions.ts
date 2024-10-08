@@ -1,9 +1,9 @@
-/** ohg boy */
+/** calculates collisions. */
 
 import type { Clone } from "./clone.js";
 
 /**
- * 
+ * sorts and evaluates distances between items in order to detect collisions.
  * @param items the items to compare
  */
 export function detectCollisions(items: Set<Clone>): void {
