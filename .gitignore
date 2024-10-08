@@ -8,3 +8,6 @@ build
 *.js
 package-lock.json
 .vscode
+build
+
+*.ignore*

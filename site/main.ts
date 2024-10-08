@@ -5,6 +5,7 @@
 import { Clone } from "./scripts/clone.js";
 import * as audio from "./scripts/audio.js";
 import { detectCollisions } from "./scripts/collisions.js";
+import { COOMER_ALTS, COOMER_SPRITES, SECRET_COOMER_ALTS, SECRET_COOMER_SPRITES } from "./scripts/assets.js";
 
 // gather elements :]
 const CONTAINER = document.getElementById("container") as HTMLDivElement;
@@ -21,6 +22,9 @@ let clones: Set<Clone> = new Set();
 let total = 0;
 let dead = 0;
 let alive = 0;
+
+// flags
+let hasAddedSecret = false;
 
 
 // animation runs on update
@@ -44,6 +48,12 @@ function onUpdate() {
     STAT_TOTAL.innerText = "" + total;
     STAT_ALIVE.innerText = "" + alive;
     STAT_DEAD.innerText = "" + dead;
+
+    if (!hasAddedSecret && total > 200) {
+        COOMER_SPRITES.push(...SECRET_COOMER_SPRITES);
+        COOMER_ALTS.push(...SECRET_COOMER_ALTS);
+        hasAddedSecret = true;
+    }
 
     requestAnimationFrame(onUpdate)
 }

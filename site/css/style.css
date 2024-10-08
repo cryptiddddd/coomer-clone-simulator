@@ -16,7 +16,7 @@
     --corners: 2px;
     --soft-outline: 1px solid color-mix(in srgb, var(--fg) 50%, transparent);
 
-    --clone-size: 72px;
+    --clone-size: 200px;
 }
 
 ::selection {
@@ -180,6 +180,8 @@ button:hover {
 
 .clone {
     width: var(--clone-size);
+    
+    filter: drop-shadow(0 0 15px var(--accent));
 }
 
 .explosion {
@@ -188,7 +190,4 @@ button:hover {
 
 /* mobile styling */
 @media (max-width: 960px) {
-    :root {
-        --clone-size: 48px;
-    }
 }

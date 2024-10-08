@@ -1,5 +1,11 @@
 {
   "devDependencies": {
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "wrangler": "^3.80.1"
+  },
+  "scripts": {
+    "build": "rsync -av --exclude=*.ts site/ build",
+    "rmbuild": "rm -r build",
+    "deploy": "npm run build && npx wrangler pages deploy build"
   }
 }
