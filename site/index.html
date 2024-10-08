@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dr. Coomer's Clone Simulator</title>
+
+    <meta property="description" content="Watch Dr. Coomer fight his evil clones.">
+    <meta property="author" content="crane presents">
+    <meta name="theme-color" content="#60EA0E">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <script type="module" src="/main.js"></script>
+</head>
+<body>
+    
+    <!-- this is where the clones go -->
+    <div id="container"></div>
+
+    <div class="frame">
+        <div id="stats" class="window">
+            <div class="row">
+                <span>TOTAL SPAWNED:</span>
+                <span id="stat-total"></span>
+            </div>
+
+            <div class="row">
+                <span>ALIVE:</span>
+                <span id="stat-alive"></span>
+            </div>
+
+            <div class="row">
+                <span>DEAD:</span>
+                <span id="stat-dead"></span>
+            </div>
+        </div>
+
+        <!-- da buttons -->
+        <div id="toolbar">
+            
+            <button id="spawn">SPAWN</button>
+            <button id="kill">KILL</button>
+
+        </div>
+    </div>
+
+</body>
+</html>

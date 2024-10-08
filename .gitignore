@@ -1,0 +1,10 @@
+.env
+node_modules
+build
+.trash
+.sveltekit
+.cloudflare
+.obsidian
+*.js
+package-lock.json
+.vscode
