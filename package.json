@@ -8,8 +8,9 @@
   },
   "scripts": {
     "compile": "webpack",
-    "build": "rsync -av --exclude=*.ts site/ build",
+    "build": "rsync -av --exclude=*.ts --exclude=scripts/ site/ build",
     "rmbuild": "rm -r build",
-    "deploy": "npm run build && npx wrangler pages deploy build"
+    "deploy": "npm run build && npx wrangler pages deploy build",
+    "update": "npm run compile && npm run build && npm run deploy"
   }
 }
