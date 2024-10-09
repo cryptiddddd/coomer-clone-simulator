@@ -2,10 +2,19 @@
  * main script -- manages base behavior and gathers html elements from document.
  */
 
-import { Clone } from "./scripts/clone.js";
-import * as audio from "./scripts/audio.js";
-import { detectCollisions } from "./scripts/collisions.js";
-import { COOMER_ALTS, COOMER_SPRITES, SECRET_COOMER_ALTS, SECRET_COOMER_SPRITES } from "./scripts/assets.js";
+import { Clone } from "./scripts/clone";
+import * as audio from "./scripts/audio";
+import { detectCollisions } from "./scripts/collisions";
+import { COOMER_ALTS, COOMER_SPRITES, EXPLOSION_GIF, SECRET_COOMER_ALTS, SECRET_COOMER_SPRITES } from "./scripts/assets";
+
+import { preloadImg } from "./scripts/setup";
+
+// setup
+preloadImg(
+    ...COOMER_SPRITES,
+    ...SECRET_COOMER_SPRITES,
+    EXPLOSION_GIF
+);
 
 // gather elements :]
 const CONTAINER = document.getElementById("container") as HTMLDivElement;

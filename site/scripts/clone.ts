@@ -2,11 +2,11 @@
  * contains code for all clone behavior.
  */
 
-import { COOMER_ALTS, COOMER_SPRITES, SPRITE_DIR } from "./assets.js";
-import { MAX_VEL, MIN_VEL, START_RANGE } from "./config.js";
+import { COOMER_ALTS, COOMER_SPRITES, SPRITE_DIR } from "./assets";
+import { MAX_VEL, MIN_VEL, START_RANGE } from "./config";
 
-import * as audio from "./audio.js";
-import { Explosion } from "./explosion.js";
+import * as audio from "./audio";
+import { Explosion } from "./explosion";
 
 
 /**
@@ -49,6 +49,7 @@ export class Clone {
     velocity: Types.Vector2;
 
     powerLvl: number;
+    victims: number;
 
     isBorn: boolean;
     isDead: boolean;
@@ -59,6 +60,7 @@ export class Clone {
     constructor() {
         this.isBorn = false;
         this.isDead = false;
+        this.victims = 0;
         this.powerLvl = Math.floor(Math.random() * START_RANGE); // random starting level in the given range. integer.
 
         this.velocity = {
@@ -154,6 +156,7 @@ export class Clone {
 
         // absorb and die.
         winner.powerLvl += loser.powerLvl;
+        winner.victims ++;
         loser.die();
     }
 }

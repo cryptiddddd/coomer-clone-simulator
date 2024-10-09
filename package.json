@@ -1,9 +1,13 @@
 {
   "devDependencies": {
+    "ts-loader": "^9.5.1",
     "typescript": "^5.6.2",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
     "wrangler": "^3.80.1"
   },
   "scripts": {
+    "compile": "webpack",
     "build": "rsync -av --exclude=*.ts site/ build",
     "rmbuild": "rm -r build",
     "deploy": "npm run build && npx wrangler pages deploy build"

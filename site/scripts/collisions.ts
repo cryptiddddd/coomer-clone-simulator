@@ -1,6 +1,6 @@
 /** calculates collisions. */
 
-import type { Clone } from "./clone.js";
+import type { Clone } from "./clone";
 
 /**
  * sorts and evaluates distances between items in order to detect collisions.

@@ -6,6 +6,7 @@ build
 .cloudflare
 .obsidian
 *.js
+!*.config.js
 package-lock.json
 .vscode
 build

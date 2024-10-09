@@ -2,6 +2,8 @@
  * class of explosion
  */
 
+import { EXPLOSION_GIF } from "./assets";
+
 
 /**
  * class manages behavior for explosion animation.
@@ -26,7 +28,7 @@ export class Explosion {
 
     createExplosion(): HTMLImageElement {
         let element = document.createElement("img");
-        element.src = "/explosion.gif";
+        element.src = `/${EXPLOSION_GIF}`;
         element.alt = "a gif animation of an explosion.";
 
         element.classList.add("explosion");
