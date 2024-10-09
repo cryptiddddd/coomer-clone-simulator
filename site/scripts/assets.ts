@@ -1,6 +1,6 @@
 /** specifications for which assets are where. */
 
-import * as config from "./config";
+import config from "./config";
 
 
 // directories
@@ -35,10 +35,10 @@ function preloadAudio(...audios: string[]): HTMLAudioElement[] {
 export let EXPLOSION_GIF = "explosion.gif";
 
 export let COOMER_SPRITES = [
-    "coomer1.png",
-    "coomer2.png",
-    "coomer3.png",
-    "coomer4.png",
+    `${SPRITE_DIR}/coomer1.png`,
+    `${SPRITE_DIR}/coomer2.png`,
+    `${SPRITE_DIR}/coomer3.png`,
+    `${SPRITE_DIR}/coomer4.png`,
 ];
 
 export let COOMER_ALTS = [
@@ -49,7 +49,7 @@ export let COOMER_ALTS = [
 ];
 
 export const SECRET_COOMER_SPRITES = [
-    "coomer5.png"
+    `${SPRITE_DIR}/coomer5.png`
 ];
 
 export const SECRET_COOMER_ALTS = [

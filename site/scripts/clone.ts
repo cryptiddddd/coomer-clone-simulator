@@ -2,38 +2,17 @@
  * contains code for all clone behavior.
  */
 
-import { COOMER_ALTS, COOMER_SPRITES, SPRITE_DIR } from "./assets";
-import { MAX_VEL, MIN_VEL, START_RANGE } from "./config";
+import { COOMER_ALTS, COOMER_SPRITES } from "./assets";
+import config from "./config";
 
 import * as audio from "./audio";
 import { Explosion } from "./explosion";
 
 
-/**
- * helper function to generate the element of the coomer clone.
- * @param file filename of the desired sprite.
- * @param alt alt text for the element.
- * @returns an image element prepared to be placed in the parent element.
- */
-function buildElement(file: string, alt: string): HTMLImageElement {
-    const elem = document.createElement("img");
-    elem.src = `/${SPRITE_DIR}/${file}`;
-    elem.alt = alt;
-    elem.classList.add("clone");
-    elem.draggable = false;
-
-    // yell
-    elem.addEventListener("click", () => {
-        audio.onClick();
-    });
-    
-    return elem;
-}
-
 function generateVelocity(): number {
     // TOO LAZY TO FIGURE OUT AN ELEGANT EQUATION AUGUHH
     const polarity = Math.round(Math.random())? 1: -1;
-    return Math.random() * (MAX_VEL - MIN_VEL) + MIN_VEL * polarity;
+    return Math.random() * (config.MAX_VEL - config.MIN_VEL) + config.MIN_VEL * polarity;
 }
 
 
@@ -42,7 +21,8 @@ function generateVelocity(): number {
  */
 export class Clone {
     var: number;
-    element: HTMLImageElement;
+    element: HTMLElement;
+    counter: HTMLSpanElement;
     parent?: HTMLDivElement;
 
     position: Types.Vector2;
@@ -61,7 +41,7 @@ export class Clone {
         this.isBorn = false;
         this.isDead = false;
         this.victims = 0;
-        this.powerLvl = Math.floor(Math.random() * START_RANGE); // random starting level in the given range. integer.
+        this.powerLvl = Math.floor(Math.random() * config.START_RANGE); // random starting level in the given range. integer.
 
         this.velocity = {
             x: generateVelocity(),
@@ -72,7 +52,39 @@ export class Clone {
 
         this.var = Math.floor(Math.random() * COOMER_SPRITES.length);
 
-        this.element = buildElement(COOMER_SPRITES[this.var], COOMER_ALTS[this.var]);
+        this.element = this.buildElement(COOMER_SPRITES[this.var], COOMER_ALTS[this.var]);
+    }
+
+
+    /**
+     * helper function to generate the element of the coomer clone.
+     * @param file filename of the desired sprite.
+     * @param alt alt text for the element.
+     * @returns an image element prepared to be placed in the parent element.
+     */
+    private buildElement(file: string, alt: string): HTMLElement {
+        const elem = document.createElement("div");
+        const img = document.createElement("img");
+        this.counter = document.createElement("span");
+
+        this.counter.innerText = "" + this.victims;
+        this.counter.classList.add("kill-count");
+
+        img.src = `/${file}`;
+        img.alt = alt;
+        img.draggable = false;
+        
+        elem.classList.add("clone");
+
+        // yell
+        elem.addEventListener("click", () => {
+            audio.onClick();
+        });
+
+        elem.appendChild(img);
+        elem.appendChild(this.counter);
+        
+        return elem;
     }
 
     /** simply updates the element's position based on the data. */
@@ -101,7 +113,12 @@ export class Clone {
             doesBounce = true
         }
         if (doesBounce) this.bounce(bounceVector);
-   }
+    }
+
+    private countVictim() {
+        this.victims++;
+        this.counter.innerText = "" + this.victims;
+    }
 
     die(): void {
         this.isDead = true;
@@ -151,12 +168,12 @@ export class Clone {
      */
     fight(enemy: Clone): void {
         let [loser, winner] = [this, enemy].sort((a: Clone, b: Clone): number => {
-            return a.powerLvl + Math.random() - b.powerLvl + Math.random();
+            return a.powerLvl + b.powerLvl * Math.random() - b.powerLvl + a.powerLvl * Math.random();
         });
 
         // absorb and die.
         winner.powerLvl += loser.powerLvl;
-        winner.victims ++;
+        winner.countVictim();
         loser.die();
     }
 }

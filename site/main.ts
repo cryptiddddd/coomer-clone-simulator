@@ -4,6 +4,7 @@
 
 import { Clone } from "./scripts/clone";
 import * as audio from "./scripts/audio";
+import config from "./scripts/config";
 import { detectCollisions } from "./scripts/collisions";
 import { COOMER_ALTS, COOMER_SPRITES, EXPLOSION_GIF, SECRET_COOMER_ALTS, SECRET_COOMER_SPRITES } from "./scripts/assets";
 
@@ -16,10 +17,14 @@ preloadImg(
     EXPLOSION_GIF
 );
 
+console.info("all preloaded assets are preloaded for a reason heart emoji");
+
 // gather elements :]
 const CONTAINER = document.getElementById("container") as HTMLDivElement;
+
 const SPAWN_BTN = document.getElementById("spawn") as HTMLButtonElement;
 const KILL_BTN = document.getElementById("kill") as HTMLButtonElement;
+const VOL_SLIDER = document.getElementById("volume-slider") as HTMLInputElement;
 
 const STAT_TOTAL = document.getElementById("stat-total") as HTMLSpanElement;
 const STAT_ALIVE = document.getElementById("stat-alive") as HTMLSpanElement;
@@ -34,6 +39,14 @@ let alive = 0;
 
 // flags
 let hasAddedSecret = false;
+
+
+// volume setup
+VOL_SLIDER.value = "" + config.BASE_VOL;
+
+VOL_SLIDER.addEventListener("change", () => {
+    config.BASE_VOL = Number(VOL_SLIDER.value);
+});
 
 
 // animation runs on update

@@ -11,7 +11,7 @@ export function preloadImg(...images: string[]): void {
         link.rel = "preload";
         link.as = "image";
 
-        link.href = `/${SPRITE_DIR}/${href}`;
+        link.href = `/${href}`;
 
         document.head.appendChild(link);
     }

@@ -12,7 +12,7 @@ export function detectCollisions(items: Set<Clone>): void {
         const result = Math.sqrt((b.position.x - a.position.x)**2 + (b.position.y - a.position.y)**2);
 
         // COLLIDE....
-        if (result < a.element.width / 2) {
+        if (result < a.element.clientWidth / 2) {
             a.fight(b);
         }
 
